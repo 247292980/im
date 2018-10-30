@@ -63,6 +63,7 @@ type myConn struct {
 }
 
 //*************************配置文件信息结构体
+
 type Config struct {
 	SrvAddress  string
 	FileSrvAddr string // http文件服务器的地址
