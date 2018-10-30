@@ -1,0 +1,128 @@
+﻿syntax = "proto2";
+
+message Msg{
+	required string sign =1;
+	required string dataLen =2;
+	required int32 userOpt = 3;
+	optional string optResult = 4;
+	optional string receiveResult = 5;
+	optional User user = 6;
+	repeated User friends=7;//好友
+  	repeated FriendList friendLists=8;//好友分组
+  	repeated User newFriendRequest=9;//离线好友添加请求
+	repeated Group groups = 10;
+	repeated GroupMsg groupMsg = 11;
+	repeated PersonalMsg OfflineMsg=12;
+	optional PersonalMsg personalMsg = 13;
+	optional SearchInfo srchInfo = 14;
+	optional string	ErrMsg  = 15;
+	optional string token=16;
+
+}
+
+//用户
+message User{
+	required int32  userID = 1;
+	optional string userPwd = 2;
+	optional string nickName = 3;
+	optional bytes  icon = 4;//头像
+	optional string iconName = 5;
+	optional UserDetail userDetail=6;//用户详情信息
+	optional bool isOnline = 7;//是否在线
+	optional string  uesrIntro = 8;//用户介绍
+	optional int32  userRoleID = 9;//用户权限
+	optional string remark = 10; //对此用户的备注
+	optional int32  listNO= 11; //所在分组
+	optional bool  isAgree=12;//好友请求,是否同意
+}
+
+//用户详情信息
+message UserDetail{
+	optional int32 userID = 1;
+	optional string phone = 2;
+	optional string addr = 3;
+	optional string QQ = 4;
+	optional string wechat = 5;
+	optional string sex = 6;
+	optional int32  age = 7;
+	optional string idNo = 8;
+	optional string email = 9;
+	optional string ccNo = 10;
+	optional string scNo = 11;
+	optional string stdNo = 12;
+	repeated UserCustomAttr custeomAttr = 13;
+}
+//用户自定义属性
+message UserCustomAttr{
+	required string userName = 1;
+	repeated string attrName = 2;
+	repeated string attrContent = 3;
+}
+//好友分组
+message FriendList{
+	required int32 listNO= 1;//好友分组、组号
+	optional string listName = 2;//好友分组、组名
+}
+
+
+//搜索请求包含的信息
+message SearchInfo{
+	required int32 searchType = 1;
+    optional string srchName = 2;
+    optional string srchAttrb = 3;
+    optional bool onlyOnline = 4;
+    optional int32 ageLow = 5;
+    optional int32 ageHigh = 6;
+    optional bool selectMale = 7;
+    optional bool selectFemale = 8;
+}
+//群
+message Group {
+	required int32 groupID = 1;
+	optional string groupName = 2;
+	optional string groupIntro = 3;
+	optional string createTime = 4;
+	repeated GroupNumber groupNumber = 5;
+	repeated GroupNotice notices = 6;
+	optional int32 rank = 7;
+}
+//群成员
+message GroupNumber {
+	required int32 groupID = 1;
+	optional int32 numberID = 2;
+	optional string remark = 3; //群成员在群里的备注
+	optional int32 identity = 4; //成员在去群里的身份，如管理员等
+}
+//群消息
+message GroupMsg {
+	required int32 groupID = 1;
+	optional string sendTime = 2;
+	optional int32 senderID = 3;
+	optional string content = 4;
+	optional int32 readedTime = 5;
+	optional int32 msgType = 6;
+}
+//个人消息
+message PersonalMsg{
+	optional int32 senderID = 1;  //发送者
+	repeated int32 recverID = 2;//接收者
+	optional string sendTime = 3;//发送时间
+	optional string readTime = 4;//阅读者
+	optional string content = 5;//内容
+	optional int32 msgType = 6;//类型
+	optional bool isReaded = 7;//是否阅读
+	optional string msgID=8;//客户端用来标识用的，服务器不用
+	optional string fileName=10;//文件名
+	optional string FileMd5 = 11;//文件MD5
+	optional string fileLen = 13; //文件长度
+	optional bool  isNeedUpload=15;//秒传用的、是否需要上传
+}
+//群公告
+message GroupNotice {
+	required int32 groupID = 1;
+	optional string createTime = 2;
+	optional int32 createID = 3;
+	optional string title = 4;
+	optional string content = 5;
+	optional string modifyTime = 6;
+}

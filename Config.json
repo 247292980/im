@@ -1,0 +1,36 @@
+{
+	"SrvAddress":":6668",
+	"FileSrvAddr":":6669",
+	"RedisNetWork":"tcp",
+	"RedisAddress":"localhost:6379",
+	"MongoDBAddrs":"localhost:27017",
+	"MongoDBuser":"admin",
+	"MongoDBpsw":"123456",
+
+	"LoginOP":1,  
+	"RegisOP":2,
+	"ChatOP" :3,
+	"ReadedOP":4,
+	"OffLineMsgOP":5,
+	"GetFriendListOP":6,
+	"AddFriendRequestOP":7,
+	"AddFriendResponseOP":8,
+	"DeltFriendOP":9,
+	"RemarkFriendOP":10,
+	"AddFriendGroupOP":11,
+	"DetFriendGroupOP":12,
+	"RemarFriendkGroupOP":13,
+	
+	"CacheToDBTime":101101,
+	"DBToCacheTime":111115,
+
+	
+	"Sign":"142857",
+	"PackMaxSize":40960000,  
+
+	"DBuser":"root",
+	"DBpsw":"root",
+	"DBAddress" :"localhost",
+	"DBport":"3306",
+	"DBname":"login"
+}
